@@ -1,0 +1,222 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Description": "Sgviz example security group set template (Donburi version).\n",
+  "Resources": {
+    "Vpc": {
+      "Type": "AWS::EC2::VPC",
+      "Properties": {
+        "CidrBlock": "10.0.0.0/16"
+      }
+    },
+    "ManageSecurityGroup": {
+      "Type": "AWS::EC2::SecurityGroup",
+      "Properties": {
+        "GroupDescription": "Security group for manage role EC2 instances.",
+        "VpcId": {
+          "Ref": "Vpc"
+        },
+        "SecurityGroupIngress": [
+          {
+            "CidrIp": "123.45.67.89/32",
+            "IpProtocol": "tcp",
+            "FromPort": "22",
+            "ToPort": "22"
+          },
+          {
+            "CidrIp": "123.45.67.89/32",
+            "IpProtocol": "tcp",
+            "FromPort": "80",
+            "ToPort": "80"
+          },
+          {
+            "CidrIp": "123.45.67.89/32",
+            "IpProtocol": "tcp",
+            "FromPort": "443",
+            "ToPort": "443"
+          },
+          {
+            "CidrIp": "234.56.78.90/32",
+            "IpProtocol": "tcp",
+            "FromPort": "22",
+            "ToPort": "22"
+          },
+          {
+            "CidrIp": "234.56.78.90/32",
+            "IpProtocol": "tcp",
+            "FromPort": "80",
+            "ToPort": "80"
+          },
+          {
+            "CidrIp": "234.56.78.90/32",
+            "IpProtocol": "tcp",
+            "FromPort": "443",
+            "ToPort": "443"
+          }
+        ],
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "manage"
+          }
+        ]
+      }
+    },
+    "AppLoadBalancerSecurityGroup": {
+      "Type": "AWS::EC2::SecurityGroup",
+      "Properties": {
+        "GroupDescription": "Security group for application load balancer.",
+        "VpcId": {
+          "Ref": "Vpc"
+        },
+        "SecurityGroupIngress": [
+          {
+            "CidrIp": "0.0.0.0/0",
+            "IpProtocol": "tcp",
+            "FromPort": "80",
+            "ToPort": "80"
+          },
+          {
+            "CidrIp": "0.0.0.0/0",
+            "IpProtocol": "tcp",
+            "FromPort": "443",
+            "ToPort": "443"
+          }
+        ],
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "app_load_balancer"
+          }
+        ]
+      }
+    },
+    "AppSecurityGroup": {
+      "Type": "AWS::EC2::SecurityGroup",
+      "Properties": {
+        "GroupDescription": "Security group for application EC2 instances.",
+        "VpcId": {
+          "Ref": "Vpc"
+        },
+        "SecurityGroupIngress": [
+          {
+            "SourceSecurityGroupId": {
+              "Ref": "AppLoadBalancerSecurityGroup"
+            },
+            "IpProtocol": "tcp",
+            "FromPort": "80",
+            "ToPort": "80"
+          },
+          {
+            "SourceSecurityGroupId": {
+              "Ref": "ManageSecurityGroup"
+            },
+            "IpProtocol": "tcp",
+            "FromPort": "22",
+            "ToPort": "22"
+          },
+          {
+            "SourceSecurityGroupId": {
+              "Ref": "ManageSecurityGroup"
+            },
+            "IpProtocol": "tcp",
+            "FromPort": "10050",
+            "ToPort": "10050"
+          }
+        ],
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "app"
+          }
+        ]
+      }
+    },
+    "Port10051IngressFromAppToManage": {
+      "Type": "AWS::EC2::SecurityGroupIngress",
+      "Properties": {
+        "GroupId": {
+          "Ref": "ManageSecurityGroup"
+        },
+        "SourceSecurityGroupId": {
+          "Ref": "AppSecurityGroup"
+        },
+        "IpProtocol": "tcp",
+        "FromPort": "10051",
+        "ToPort": "10051"
+      }
+    },
+    "RedisSecurityGroup": {
+      "Type": "AWS::EC2::SecurityGroup",
+      "Properties": {
+        "GroupDescription": "Security group for ElastiCache Redis clusters.",
+        "VpcId": {
+          "Ref": "Vpc"
+        },
+        "SecurityGroupIngress": [
+          {
+            "SourceSecurityGroupId": {
+              "Ref": "ManageSecurityGroup"
+            },
+            "IpProtocol": "tcp",
+            "FromPort": "6379",
+            "ToPort": "6379"
+          },
+          {
+            "SourceSecurityGroupId": {
+              "Ref": "AppSecurityGroup"
+            },
+            "IpProtocol": "tcp",
+            "FromPort": "6379",
+            "ToPort": "6379"
+          }
+        ],
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "redis"
+          }
+        ]
+      }
+    },
+    "MysqlSecurityGroup": {
+      "Type": "AWS::EC2::SecurityGroup",
+      "Properties": {
+        "GroupDescription": "Security group for RDS MySQL DB instances.",
+        "VpcId": {
+          "Ref": "Vpc"
+        },
+        "SecurityGroupIngress": [
+          {
+            "SourceSecurityGroupId": {
+              "Ref": "ManageSecurityGroup"
+            },
+            "IpProtocol": "tcp",
+            "FromPort": "3306",
+            "ToPort": "3306"
+          },
+          {
+            "SourceSecurityGroupId": {
+              "Ref": "AppSecurityGroup"
+            },
+            "IpProtocol": "tcp",
+            "FromPort": "3306",
+            "ToPort": "3306"
+          }
+        ],
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "mysql"
+          }
+        ]
+      }
+    }
+  },
+  "Outputs": {
+    "Vpc": {
+      "Value": {
+        "Ref": "Vpc"
+      }
+    }
+  }
+}
