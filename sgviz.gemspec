@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["email@y13i.com"]
   spec.summary       = %(Visualize VPC Security Groups.)
   spec.description   = %(A visualization tool for AWS VPC Security Groups.)
-  spec.homepage      = ""
+  spec.homepage      = "https://github.com/y13i/sgviz"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
