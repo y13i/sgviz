@@ -74,12 +74,14 @@ class Sgviz::Generator < Gviz
               shape:       "circle",
               width:       1.5
 
+            name_tag = security_group.tags.find {|tag| tag.key == "Name"}
+
             node security_group.id.to_id,
               shape:     "note",
               style:     "filled",
               color:     "#EDEAD2",
               fillcolor: "#EDEAD2",
-              label:     eval(options.security_group_label),
+              label:     "#{name_tag ? name_tag.value : security_group.group_name}\n(#{security_group.id})",
               fontsize:  options.fontsize,
               fontname:  options.fontname,
               fontcolor: "#54523F",

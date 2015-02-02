@@ -40,10 +40,6 @@ class Sgviz::CLI < Thor
     desc:    "Label of the diagram.",
     default: ""
 
-  class_option :security_group_label,
-    desc:    "Label of each security groups.",
-    default: %q("#{security_group.group_name}\n(#{security_group.id})")
-
   class_option :fontname,
     desc:    "Font name used on labels.",
     default: "Futura"
