@@ -1,6 +1,6 @@
 # Sgviz
 
-TODO: Write a gem description
+A visualization tool for AWS VPC Security Groups.
 
 ## Installation
 
@@ -12,15 +12,36 @@ gem 'sgviz'
 
 And then execute:
 
-    $ bundle
+```bash
+$ bundle
+```
 
 Or install it yourself as:
 
-    $ gem install sgviz
+```bash
+$ gem install sgviz
+```
 
 ## Usage
 
-TODO: Write usage instructions here
+```bash
+$ sgviz generate --output-path myvpc --region ap-northeast-1 --vpc-ids vpc-146fad71
+```
+
+will generate
+
+![myvpc](docs/images/1.png)
+
+If you using OSX, `$ sgviz open` to view the graph instantly.
+
+## TODO, Known Bugs
+
+* Bug: Problem with outbound edges (duplicate with inbound?).
+* TODO: Internal IP address nodes.
+* TODO: VPC Peerings.
+* TODO: Add spec. (No test code now. Sorry.)
+* TODO: Integrate EC2/ELB/RDS/ElastiCache/Redshift components in graph.
+* etc...
 
 ## Contributing
 
