@@ -34,7 +34,7 @@ class Sgviz::CLI < Thor
   class_option :inbound_only,
     desc:    "If specified, graph will exclude outbound rules.",
     type:    :boolean,
-    default: false
+    default: true
 
   class_option :global_label,
     desc:    "Label of the diagram.",
