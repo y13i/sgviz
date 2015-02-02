@@ -41,7 +41,7 @@ Run `sgviz help` to view more usage.
 You can create example stack using bundled CloudFormation template.
 
 ```bash
-$ aws cloudformation create-stack --stack-name example  --template-body docs/cfn/example.json
+$ aws cloudformation create-stack --stack-name example  --template-body file:////path/to/this/repo/docs/cfn/example.json
 ```
 
 Or use [Kumogata](https://github.com/winebarrel/kumogata), powerful Ruby-CFn integration tool.
