@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = Sgviz::VERSION
   spec.authors       = ["y13i"]
   spec.email         = ["email@y13i.com"]
-  spec.summary       = %(Visualize EC2 Security Groups.)
-  spec.description   = %(Visualize EC2 Security Groups.)
+  spec.summary       = %(Visualize VPC Security Groups.)
+  spec.description   = %(A visualization tool for AWS VPC Security Groups.)
   spec.homepage      = ""
   spec.license       = "MIT"
 
