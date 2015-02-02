@@ -161,7 +161,7 @@ Resources do
       Tags [
         _{
           Key   "Name"
-          Value "redis"
+          Value "mysql"
         }
       ]
     end
