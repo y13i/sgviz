@@ -101,6 +101,18 @@ Resources do
     end
   end
 
+  Port10051IngressFromAppToManage do
+    Type "AWS::EC2::SecurityGroupIngress"
+
+    Properties do
+      GroupId               {Ref "ManageSecurityGroup"}
+      SourceSecurityGroupId {Ref "AppSecurityGroup"}
+      IpProtocol            "tcp"
+      FromPort              10051
+      ToPort                10051
+    end
+  end
+
   RedisSecurityGroup do
     Type "AWS::EC2::SecurityGroup"
 
