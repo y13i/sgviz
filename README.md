@@ -22,6 +22,12 @@ Or install it yourself as:
 $ gem install sgviz
 ```
 
+Graphviz is required to generate graphs.
+
+```bash
+$ brew install graphviz
+```
+
 ## Usage
 
 ```bash
