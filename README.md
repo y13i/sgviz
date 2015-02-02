@@ -32,7 +32,9 @@ will generate
 
 ![myvpc](docs/images/1.png)
 
-If you using OSX, `$ sgviz open` to view the graph instantly.
+If you using OSX, run `$ sgviz open` to view the graph instantly.
+
+Run `$ sgviz help` to view more usage.
 
 ## TODO, Known Bugs
 
