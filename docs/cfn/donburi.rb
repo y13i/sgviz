@@ -21,9 +21,7 @@ Resources do
       VpcId            {Ref "Vpc"}
 
       SecurityGroupIngress(
-        ["123.45.67.89/32", "234.56.78.90/32"].product([22, 80, 443]).map do |pair|
-          my_ip, port = *pair
-
+        ["123.45.67.89/32", "234.56.78.90/32", ].product([22, 80, 443]).map do |my_ip, port|
           _{
             CidrIp     my_ip
             IpProtocol "tcp"
