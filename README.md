@@ -32,9 +32,23 @@ will generate
 
 ![myvpc](docs/images/1.png)
 
-If you using OSX, run `$ sgviz open` to view the graph instantly.
+If you're using OSX, run `sgviz open` to view the graph instantly.
 
-Run `$ sgviz help` to view more usage.
+Run `sgviz help` to view more usage.
+
+## CloudFormation Template
+
+You can create example stack using bundled CloudFormation template.
+
+```bash
+$ aws cloudformation create-stack --stack-name example  --template-body docs/cfn/example.json
+```
+
+Or use [Kumogata](https://github.com/winebarrel/kumogata), powerful Ruby-CFn integration tool.
+
+```bash
+$ kumogata create docs/cfn/example.rb example
+```
 
 ## TODO, Known Bugs
 
