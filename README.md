@@ -56,6 +56,8 @@ Or use [Kumogata](https://github.com/winebarrel/kumogata), powerful Ruby-CFn int
 $ kumogata create docs/cfn/example.rb example
 ```
 
+Or use [cloudformation-ruby-dsl](https://github.com/bazaarvoice/cloudformation-ruby-dsl), another powerful CloudFormation templating tool.
+
 ## TODO, Known Bugs
 
 * Bug: Problem with outbound edges (duplicate with inbound?).
