@@ -53,9 +53,9 @@ class Sgviz::Generator < Gviz
             shape:       "circle",
             width:       1.5
 
-          subgraph :"cluster#{vpc_id[4..-1]}" do
+          subgraph :"cluster#{vpc_id ? vpc_id[4..-1] : 'ec2_classic'}" do
             global(
-              label:     vpc_id,
+              label:     vpc_id ? vpc_id : 'EC2-Classic',
               labelloc:  "b",
               style:     "rounded",
               color:     "#999999",
