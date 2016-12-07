@@ -60,6 +60,7 @@ Or use [cloudformation-ruby-dsl](https://github.com/bazaarvoice/cloudformation-r
 
 ## TODO, Known Bugs
 
+* **Rebuild**
 * Bug: Problem with outbound edges (duplicate with inbound?).
 * TODO: Internal IP address nodes.
 * TODO: VPC Peerings.
