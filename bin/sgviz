@@ -1,5 +1,0 @@
-#!/usr/bin/env ruby
-
-require "sgviz"
-
-Sgviz::CLI.start
