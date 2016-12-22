@@ -1,0 +1,22 @@
+{
+  "name": "sgviz",
+  "version": "0.1.0",
+  "description": "Visualize AWS Security Groups.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/y13i/sgviz.git"
+  },
+  "author": "Yoriki Yamaguchi <email@y13i.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/y13i/sgviz/issues"
+  },
+  "homepage": "https://github.com/y13i/sgviz#readme"
+}

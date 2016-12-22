@@ -14,3 +14,5 @@
 mkmf.log
 vendor
 result.json
+
+node_modules
