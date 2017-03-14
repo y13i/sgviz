@@ -1,5 +1,19 @@
 # Sgviz
 
+## Ideas
+
+- React
+- D3.js
+- Webpack
+- https://github.com/gin-gonic/gin
+- https://github.com/jteeuwen/go-bindata
+
+- http://jsfiddle.net/doraeimo/JEcdS/
+- https://www.webprofessional.jp/how-react-makes-your-d3-better/
+
+
+---
+
 A visualization tool for AWS VPC Security Groups.
 
 ## Installation
