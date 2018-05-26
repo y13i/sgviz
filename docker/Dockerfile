@@ -1,5 +1,5 @@
 # Pull base image.
-FROM quay.io/verygoodsecurity/aws-cli-tools:latest 
+FROM gjyoung1974/aws-cli-tools:latest 
 
 MAINTAINER Gordon Young <gjyoung1974@gmail.com>
 
